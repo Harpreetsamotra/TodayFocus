@@ -39,7 +39,7 @@ input.forEach((inputs) => {
   if(allGoals[inputs.id].completed){
     inputs.parentElement.classList.add("completed")
   }
-  inputs.addEventListener("focus", () => {
+  inputs.addEventListener("click", () => {
     labels.classList.remove("error");
     inputs.addEventListener("input",(e)=>{
       allGoals[inputs.id]={
