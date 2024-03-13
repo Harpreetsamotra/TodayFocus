@@ -26,7 +26,9 @@ circle.forEach((e) => {
       arr=Object.values(allGoals).filter((e)=> e.completed).length;
       info.innerHTML=`${arr} / ${totalGoalLenght} completed`;
       barTwo.style.width=`${arr/totalGoalLenght*100}%`;
+      localStorage.setItem('allGoals', JSON.stringify(allGoals))
     } 
+
      else {
       labels.classList.add("error");
     }
@@ -34,21 +36,82 @@ circle.forEach((e) => {
 
 
 input.forEach((inputs) => {
- 
-  inputs.value=allGoals[inputs.id].name;
+  if (allGoals[inputs.id]) {
+    inputs.value=allGoals[inputs.id].name;
+    // console.log(inputs.value);
   if(allGoals[inputs.id].completed){
     inputs.parentElement.classList.add("completed")
   }
+}
   inputs.addEventListener("focus", () => {
     labels.classList.remove("error");
-     })
-  
-    inputs.addEventListener("input",(e)=>{
-      allGoals[inputs.id]={
-        name:inputs.value,
-        completed:false}
-      localStorage.setItem("allGoals",JSON.stringify(allGoals));
-    });
- 
-});
+  })
 
+//   inputs.addEventListener('input', (e) => {
+//     if (allGoals[input.id] && allGoals[input.id].completed) {
+//       input.value = allGoals[input.id].name
+//       return
+//     }
+//     inputs.addEventListener("input",(e)=>{
+//       allGoals[inputs.id]={
+//         name:inputs.value,
+//         completed:false}
+//       localStorage.setItem("allGoals",JSON.stringify(allGoals));
+//     });
+//   })
+// });
+
+
+inputs.addEventListener('input', (e) => {
+  if (allGoals[inputs.id] && allGoals[inputs.id].completed) {
+    inputs.value = allGoals[inputs.id].name
+    return
+  }
+
+  if (allGoals[inputs.id]) {
+    allGoals[inputs.id].name = inputs.value
+  } else {
+    allGoals[inputs.id] = {
+      name: inputs.value,
+      completed: false,
+    }
+  }
+
+  localStorage.setItem('allGoals', JSON.stringify(allGoals))
+})
+})
+
+
+// input.forEach((inputs) => {
+//   if (allGoals[inputs.id]) {
+//     inputs.value = allGoals[inputs.id].name
+//     // console.log(inputs.value);
+
+//     if (allGoals[inputs.id].completed) {
+//       inputs.parentElement.classList.add('completed')
+//     }
+//   }
+
+//   inputs.addEventListener('focus', () => {
+//     labels.classList.remove("error");
+//     //  console.log("hiiii");
+//   })
+
+//   inputs.addEventListener('input', (e) => {
+//     if (allGoals[inputs.id] && allGoals[inputs.id].completed) {
+//       inputs.value = allGoals[inputs.id].name
+//       return
+//     }
+
+//     if (allGoals[inputs.id]) {
+//       allGoals[inputs.id].name = inputs.value
+//     } else {
+//       allGoals[inputs.id] = {
+//         name: inputs.value,
+//         completed: false,
+//       }
+//     }
+
+//     localStorage.setItem('allGoals', JSON.stringify(allGoals))
+//   })
+// })
