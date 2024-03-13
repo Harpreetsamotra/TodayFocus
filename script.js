@@ -47,39 +47,39 @@ input.forEach((inputs) => {
     labels.classList.remove("error");
   })
 
-//   inputs.addEventListener('input', (e) => {
-//     if (allGoals[input.id] && allGoals[input.id].completed) {
-//       input.value = allGoals[input.id].name
-//       return
+  inputs.addEventListener('input', (e) => {
+    // if (allGoals[input.id] && allGoals[input.id].completed) {
+    //   input.value = allGoals[input.id].name
+    //   return
+    // }
+    
+      allGoals[inputs.id]={
+        name:inputs.value,
+        completed:false}
+      localStorage.setItem("allGoals",JSON.stringify(allGoals));
+    });
+  })
+
+
+
+// inputs.addEventListener('input', (e) => {
+//   // if (allGoals[inputs.id] && allGoals[inputs.id].completed) {
+//   //   inputs.value = allGoals[inputs.id].name
+//   //   return
+//   // }
+
+//   if (allGoals[inputs.id]) {
+//     allGoals[inputs.id].name = inputs.value
+//   } else {
+//     allGoals[inputs.id] = {
+//       name: inputs.value,
+//       completed: false,
 //     }
-//     inputs.addEventListener("input",(e)=>{
-//       allGoals[inputs.id]={
-//         name:inputs.value,
-//         completed:false}
-//       localStorage.setItem("allGoals",JSON.stringify(allGoals));
-//     });
-//   })
-// });
+//   }
 
-
-inputs.addEventListener('input', (e) => {
-  // if (allGoals[inputs.id] && allGoals[inputs.id].completed) {
-  //   inputs.value = allGoals[inputs.id].name
-  //   return
-  // }
-
-  if (allGoals[inputs.id]) {
-    allGoals[inputs.id].name = inputs.value
-  } else {
-    allGoals[inputs.id] = {
-      name: inputs.value,
-      completed: false,
-    }
-  }
-
-  localStorage.setItem('allGoals', JSON.stringify(allGoals))
-})
-})
+//   localStorage.setItem('allGoals', JSON.stringify(allGoals))
+// })
+// })
 
 
 // input.forEach((inputs) => {
