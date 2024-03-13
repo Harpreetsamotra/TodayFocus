@@ -39,14 +39,16 @@ input.forEach((inputs) => {
   if(allGoals[inputs.id].completed){
     inputs.parentElement.classList.add("completed")
   }
-  inputs.addEventListener("input", () => {
+  inputs.addEventListener("focus", () => {
     labels.classList.remove("error");
+     })
+  
     inputs.addEventListener("input",(e)=>{
       allGoals[inputs.id]={
         name:inputs.value,
         completed:false}
       localStorage.setItem("allGoals",JSON.stringify(allGoals));
     });
-  })
+ 
 });
 
