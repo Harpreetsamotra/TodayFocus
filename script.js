@@ -63,10 +63,10 @@ input.forEach((inputs) => {
 
 
 inputs.addEventListener('input', (e) => {
-  if (allGoals[inputs.id] && allGoals[inputs.id].completed) {
-    inputs.value = allGoals[inputs.id].name
-    return
-  }
+  // if (allGoals[inputs.id] && allGoals[inputs.id].completed) {
+  //   inputs.value = allGoals[inputs.id].name
+  //   return
+  // }
 
   if (allGoals[inputs.id]) {
     allGoals[inputs.id].name = inputs.value
